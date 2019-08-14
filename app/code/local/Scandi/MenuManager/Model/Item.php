@@ -42,4 +42,19 @@ class Scandi_MenuManager_Model_Item extends Mage_Core_Model_Abstract
 
         return $types;
     }
+
+    /**
+     * Gets position path of items parent
+     *
+     * @param $parentId
+     * @return mixed
+     */
+    public function getParentPositionPath($parentId)
+    {
+        return $this->getCollection()
+            ->addFieldToSelect('position_path')
+            ->addFieldToFilter('item_id', $parentId)
+            ->getFirstItem()
+            ->getData('position_path');
+    }
 }

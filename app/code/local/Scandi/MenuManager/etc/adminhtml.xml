@@ -16,7 +16,7 @@
             <children>
                 <scandi_menumanager translate="title" module="scandi_menumanager">
                     <title>Menus</title>
-                    <action>menumanager/adminhtml_index/index</action>
+                    <action>adminhtml/menumanager_index/index</action>
                     <sort_order>25</sort_order>
                 </scandi_menumanager>
             </children>

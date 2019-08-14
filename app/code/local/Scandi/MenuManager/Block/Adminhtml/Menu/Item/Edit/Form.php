@@ -59,21 +59,42 @@ class Scandi_MenuManager_Block_Adminhtml_Menu_Item_Edit_Form
             'required'  => true,
         ));
 
+        $url_type = $fieldset->addField('url_type', 'select', array(
+            'label'     => Mage::helper('scandi_menumanager')->__('Type'),
+            'title'     => Mage::helper('scandi_menumanager')->__('Menu Item type'),
+            'name'      => 'url_type',
+            'required'  => true,
+            'options'   => array(
+                1       => Mage::helper('scandi_menumanager')->__('Url'),
+                2       => Mage::helper('scandi_menumanager')->__('CMS page'),
+            ),
+        ));
+
+        $cms_page_id = $fieldset->addField('cms_page_identifier', 'select', array(
+            'name'      => 'cms_page_identifier',
+            'required'  => true,
+            'label'     => Mage::helper('scandi_menumanager')->__('CMS page'),
+            'title'     => Mage::helper('scandi_menumanager')->__('CMS page'),
+            'values'    => Mage::getModel('cms/page')->getCollection()->toOptionArray(),
+            'value'     => $this->getCmsPageId()
+        ));
+
+        $url = $fieldset->addField('url', 'text', array(
+            'name'      => 'url',
+            'required'  => true,
+            'label'     => Mage::helper('scandi_menumanager')->__('Url'),
+            'title'     => Mage::helper('scandi_menumanager')->__('Url'),
+            'note'      => Mage::helper('cms')->__('Use " / " For Item With Base Url.'),
+        ));
+
         $fieldset->addField('parent_id', 'select', array(
             'name'      => 'parent_id',
             'label'     => Mage::helper('scandi_menumanager')->__('Parent'),
             'title'     => Mage::helper('scandi_menumanager')->__('Parent'),
             'options'   => $model->getCollection()
-                ->addMenuFilter($menuId)
-                ->toItemOptionArray(),
+                            ->addMenuFilter($menuId)
+                            ->toItemOptionArray(),
             'required'  => true,
-        ));
-
-        $fieldset->addField('url', 'text', array(
-            'name'      => 'url',
-            'label'     => Mage::helper('scandi_menumanager')->__('Url'),
-            'title'     => Mage::helper('scandi_menumanager')->__('Url'),
-            'note'      => Mage::helper('cms')->__('Use " / " For Item With Base Url.')
         ));
 
         $fieldset->addField('type', 'select', array(
@@ -122,6 +143,22 @@ class Scandi_MenuManager_Block_Adminhtml_Menu_Item_Edit_Form
         $form->setValues($model->getData());
         $form->setUseContainer(true);
         $this->setForm($form);
+
+        $this->setChild('form_after', $this->getLayout()->createBlock('adminhtml/widget_form_element_dependence')
+                ->addFieldMap($url_type->getHtmlId(), $url_type->getValue())
+                ->addFieldMap($cms_page_id->getHtmlId(), $cms_page_id->getName())
+                ->addFieldMap($url->getHtmlId(), $url->getName())
+                ->addFieldDependence(
+                    $url->getName(),
+                    $url_type->getValue(),
+                    1
+                )
+                ->addFieldDependence(
+                    $cms_page_id->getName(),
+                    $url_type->getValue(),
+                    2
+                )
+        );
 
         return parent::_prepareForm();
     }

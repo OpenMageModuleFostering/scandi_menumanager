@@ -15,7 +15,7 @@
  * @category    Scandi
  * @package     Scandi_MenuManager
  */
-class Scandi_MenuManager_Adminhtml_IndexController extends Mage_Adminhtml_Controller_Action
+class Scandi_MenuManager_Adminhtml_Menumanager_IndexController extends Mage_Adminhtml_Controller_Action
 {
     /**
      * Init actions
@@ -250,6 +250,20 @@ class Scandi_MenuManager_Adminhtml_IndexController extends Mage_Adminhtml_Contro
 
                 $this->_redirectToMenuPage();
                 return;
+            }
+
+            if ($data['url_type'] == 1) {
+                $data['cms_page_identifier'] = NULL;
+            } else {
+                $data['url'] = NULL;
+            }
+
+            $position = str_pad($data['position'], 5, '0', STR_PAD_LEFT);
+            if ($data['parent_id'] == 0) {
+                $data['position_path'] = $position;
+            } else {
+                $parentPath = (string) Mage::getModel('scandi_menumanager/item')->getParentPositionPath($data['parent_id']);
+                $data['position_path'] = $parentPath . DS . $position;
             }
 
             $data['menu_id'] = $menuId;

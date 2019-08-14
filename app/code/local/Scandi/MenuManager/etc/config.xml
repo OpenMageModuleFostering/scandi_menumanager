@@ -13,7 +13,7 @@
 <config>
     <modules>
         <Scandi_MenuManager>
-            <version>0.1.0</version>
+            <version>0.1.3</version>
         </Scandi_MenuManager>
     </modules>
     <global>
@@ -58,13 +58,13 @@
     </global>
     <admin>
         <routers>
-            <scandi_menumanager_admin>
-                <use>admin</use>
+            <adminhtml>
                 <args>
-                    <module>Scandi_MenuManager</module>
-                    <frontName>menumanager</frontName>
+                    <modules>
+                        <scandi_menumanager before="Mage_Adminhtml">Scandi_MenuManager_Adminhtml</scandi_menumanager>
+                    </modules>
                 </args>
-            </scandi_menumanager_admin>
+            </adminhtml>
         </routers>
     </admin>
     <adminhtml>

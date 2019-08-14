@@ -11,13 +11,13 @@
  */
 -->
 <layout>
-    <scandi_menumanager_admin_adminhtml_index_index>
+    <adminhtml_menumanager_index_index>
         <reference name="content">
             <block type="scandi_menumanager/adminhtml_menu" name="menumanager_menu_grid" />
         </reference>
-    </scandi_menumanager_admin_adminhtml_index_index>
+    </adminhtml_menumanager_index_index>
 
-    <scandi_menumanager_admin_adminhtml_index_edit>
+    <adminhtml_menumanager_index_edit>
         <reference name="content">
             <block type="scandi_menumanager/adminhtml_menu_edit" name="menumanager_menu_edit" />
         </reference>
@@ -28,11 +28,11 @@
                 <action method="addTab"><name>main_section</name><block>menumanager_menu_edit_tab_main</block></action>
             </block>
         </reference>
-    </scandi_menumanager_admin_adminhtml_index_edit>
+    </adminhtml_menumanager_index_edit>
 
-    <scandi_menumanager_admin_adminhtml_index_edit_item>
+    <adminhtml_menumanager_index_edit_item>
         <reference name="content">
             <block type="scandi_menumanager/adminhtml_menu_item_edit" name="menumanager_menu_item_edit" />
         </reference>
-    </scandi_menumanager_admin_adminhtml_index_edit_item>
+    </adminhtml_menumanager_index_edit_item>
 </layout>

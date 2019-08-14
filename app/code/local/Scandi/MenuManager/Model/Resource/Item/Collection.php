@@ -61,8 +61,7 @@ class Scandi_MenuManager_Model_Resource_Item_Collection
      */
     public function setPositionOrder()
     {
-        $this->setOrder('parent_id', 'asc');
-        $this->setOrder('position', 'asc');
+        $this->setOrder('position_path', 'asc');
 
         return $this;
     }

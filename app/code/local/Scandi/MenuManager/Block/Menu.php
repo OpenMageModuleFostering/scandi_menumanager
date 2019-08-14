@@ -254,13 +254,18 @@ class Scandi_MenuManager_Block_Menu extends Mage_Core_Block_Template
      */
     protected function _formatItemUrl(Varien_Data_Tree_Node $item)
     {
-        if (!($itemFullUrl = $item->getFullUrl()) && ($itemUrl = $item->getUrl())) {
-            if (strpos($itemUrl, '://') === false) {
-                $itemUrl = $this->_getUrlModel()->getDirectUrl($itemUrl != '/' ? $itemUrl : '');
-            }
+        if ($item->getUrlType() == 1) {
+            if (!($itemFullUrl = $item->getFullUrl()) && ($itemUrl = $item->getUrl())) {
+                if (strpos($itemUrl, '://') === false) {
+                    $itemUrl = $this->_getUrlModel()->getDirectUrl($itemUrl != '/' ? $itemUrl : '');
+                }
 
-            $item->setFullUrl($itemUrl);
-        };
+                $item->setFullUrl($itemUrl);
+            }
+        } else {
+            $url = Mage::Helper('cms/page')->getPageUrl($item->getCmsPageIdentifier());
+            $item->setFullUrl($url);
+        }
     }
 
     /**
@@ -352,7 +357,7 @@ class Scandi_MenuManager_Block_Menu extends Mage_Core_Block_Template
         return array(
             'tag' => Scandi_MenuManager_Model_Menu::CACHE_TAG,
             'url' => base64_encode($this->_currentUrlPath),
-            'mid' => $this->getMenu()->getId(),
+            'mid' => $this->getMenu()->getId()
         );
     }
 }

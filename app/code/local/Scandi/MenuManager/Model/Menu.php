@@ -49,4 +49,19 @@ class Scandi_MenuManager_Model_Menu extends Mage_Core_Model_Abstract
 
         return $types;
     }
+
+    /**
+     * Provide available options as a value/label array
+     *
+     * @return array
+     */
+    public function toOptionArray()
+    {
+        $collection = Mage::getModel('scandi_menumanager/menu')->getCollection();
+        $return = array();
+        foreach ($collection as $menu) {
+            $return[] = array('value' => $menu->getIdentifier(), 'label' => $menu->getTitle());
+        }
+        return $return;
+    }
 }
