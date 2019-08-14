@@ -1,12 +1,12 @@
 {
     "name": "OpenMageModuleFostering/Scandi_MenuManager",
     "type": "magento-module",
-    "license": "Academic-Free-License-(AFL-3.0)",
+    "license": "GPL",
     "homepage": "",
     "description": "Allows user to create multiple menus and add them to site.",
     "authors": [
     {
-        "name": "Scandiweb",
+        "name": "Scandiweb.com",
         "email": "info@scandiweb.com"
     }
 ],
