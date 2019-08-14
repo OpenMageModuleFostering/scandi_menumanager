@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/Scandi_MenuManager",
+    "type": "magento-module",
+    "license": "Academic-Free-License-(AFL-3.0)",
+    "homepage": "",
+    "description": "Allows user to create multiple menus and add them to site.",
+    "authors": [
+    {
+        "name": "Scandiweb",
+        "email": "info@scandiweb.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}
