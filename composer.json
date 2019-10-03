@@ -1,16 +1,19 @@
 {
-    "name": "OpenMageModuleFostering/Scandi_MenuManager",
+    "name": "OpenMageModuleFostering\/Scandi_MenuManager",
     "type": "magento-module",
     "license": "GPL",
     "homepage": "",
     "description": "Allows user to create multiple menus and add them to site.",
     "authors": [
-    {
-        "name": "Scandiweb.com",
-        "email": "info@scandiweb.com"
-    }
-],
+        {
+            "name": "Scandiweb.com",
+            "email": "info@scandiweb.com"
+        }
+    ],
     "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+        "magento-hackathon\/magento-composer-installer": "*"
+    },
+    "keywords": [
+        "openmage-module"
+    ]
 }
